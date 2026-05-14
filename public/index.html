@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Pro – Генератор кодів</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <i class="fas fa-qrcode"></i>
+            <span>QR Pro</span>
+        </div>
+        <nav id="user-nav" style="display: none;">
+            <button class="exit-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Вийти
+            </button>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Змінити тему">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<main class="container">
+    <div id="auth-screen" class="screen">
+        <h1>Створюйте QR-коди миттєво</h1>
+
+        <div class="auth-tabs">
+            <button id="tab-login" class="active" onclick="showTab('login')">Вхід</button>
+            <button id="tab-register" onclick="showTab('register')">Реєстрація</button>
+        </div>
+
+        <div id="login-form" class="tab-content">
+            <input type="email" id="loginEmail" placeholder="Електронна пошта">
+            <input type="password" id="loginPassword" placeholder="Пароль">
+            <button class="main-btn" onclick="login()">Увійти</button>
+        </div>
+
+        <div id="register-form" class="tab-content" style="display:none;">
+            <input type="text" id="username" placeholder="Ім'я користувача">
+            <input type="email" id="email" placeholder="Електронна пошта">
+            <input type="password" id="password" placeholder="Пароль (мін. 8 символів)">
+            <button class="main-btn" onclick="register()">Створити акаунт</button>
+        </div>
+
+        <button class="guest-btn" onclick="guestMode()">Спробувати як гість</button>
+    </div>
+
+    <div id="main-screen" class="screen" style="display:none;">
+        <div class="work-grid">
+            <div class="settings-panel">
+                <h3>Не гальмуй - Генеруй!</h3>
+                <textarea id="qrText" placeholder="Вставте посилання або текст..."></textarea>
+
+                <div class="option-item">
+                    <label>Колір коду:</label>
+                    <input type="color" id="fgColor" value="#000000">
+                </div>
+
+                <div class="action-buttons">
+                    <button class="main-btn" onclick="generateQR()">Згенерувати</button>
+                    <button id="save-btn" class="save-db-btn" style="display:none;" onclick="saveQR()">
+                        <i class="fas fa-cloud-upload-alt"></i> Зберегти в базу
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-panel">
+                <div id="result" class="qr-display">
+                    <div class="placeholder-qr">Ваш код з'явиться тут</div>
+                </div>
+                <button id="download-btn" class="download-btn" style="display:none;" onclick="downloadQR()">
+                    <i class="fas fa-download"></i> Завантажити PNG
+                </button>
+            </div>
+        </div>
+
+        <div id="history-section" style="display:none;">
+            <h3 class="history-title"><i class="fas fa-history"></i> Ваша історія</h3>
+            <div id="myQrs" class="qr-grid"></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 QR Pro. Всі права захищені.</p>
+        <div class="socials">
+            <a href="https://github.com/zxcsf4ik" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
