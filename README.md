@@ -149,7 +149,3 @@ npm start
 ТВ-42 Романченко Нікіта — розробка, дизайн, серверна частина, база даних
 
 [![GitHub](https://img.shields.io/badge/GitHub-zxcsf4ik-181717?style=flat&logo=github)](https://github.com/zxcsf4ik)
-
----
-
-© 2026 QR Pro. Всі права захищені.
